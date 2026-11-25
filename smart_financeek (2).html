@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Financeek — Қаржыңды ақылмен басқар</title>
+<style>
+:root{--navy:#102b3f;--green:#10b981;--mint:#dff8ee;--ink:#173247;--muted:#698091;--bg:#f5f9f8;--white:#fff;--line:#e5eeeb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input{font:inherit}a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:20;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1160px;margin:auto;padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:850;font-size:21px;color:var(--navy);letter-spacing:-.7px}.brand span{color:var(--green)}nav{display:flex;gap:22px;align-items:center;font-size:14px;color:#496273}nav a:hover{color:var(--green)}.navbtn,.primary{border:0;border-radius:12px;background:var(--green);color:white;padding:12px 17px;font-weight:700;cursor:pointer}.menu{display:none}
+.wrap{max-width:1160px;margin:auto;padding:0 22px}.hero{padding:72px 0 60px;background:radial-gradient(circle at 85% 15%,#c9f5e4 0,transparent 29%),linear-gradient(135deg,#f7fcfa,#eaf8f2)}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:45px;align-items:center}.eyebrow{display:inline-flex;padding:8px 12px;background:#e0f8ed;color:#087c58;border-radius:30px;font-size:13px;font-weight:700}.hero h1{font-size:clamp(38px,5vw,62px);line-height:1.06;letter-spacing:-2.4px;color:var(--navy);margin:19px 0}.hero h1 span{color:var(--green)}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:560px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.secondary{padding:12px 17px;border:1px solid #cddbd6;background:white;border-radius:12px;font-weight:700;cursor:pointer}.dashboard{background:var(--navy);color:white;padding:25px;border-radius:25px;box-shadow:0 25px 60px #102b3f24;transform:rotate(1deg)}.dash-top{display:flex;justify-content:space-between;color:#c6d8df;font-size:13px}.balance{font-size:34px;font-weight:800;margin:20px 0 5px}.positive{color:#73e4b6;font-size:13px}.bars{height:125px;display:flex;align-items:end;gap:12px;margin-top:25px}.bars i{flex:1;background:linear-gradient(#42d9a0,#159d73);border-radius:8px 8px 3px 3px}.bars i:nth-child(1){height:40%}.bars i:nth-child(2){height:68%}.bars i:nth-child(3){height:52%}.bars i:nth-child(4){height:85%}.bars i:nth-child(5){height:62%}.bars i:nth-child(6){height:100%}.barlabels{display:flex;justify-content:space-between;color:#b4c8d1;font-size:11px;margin-top:8px}
+section{padding:68px 0}.section-head{text-align:center;max-width:650px;margin:0 auto 35px}.section-head h2{font-size:34px;letter-spacing:-1px;color:var(--navy);margin:0 0 12px}.section-head p{color:var(--muted);line-height:1.6;margin:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:white;border:1px solid var(--line);border-radius:19px;padding:23px;box-shadow:0 8px 25px #17324708}.card .ico{width:46px;height:46px;border-radius:14px;background:var(--mint);display:grid;place-items:center;font-size:23px}.card h3{margin:17px 0 8px;color:var(--navy)}.card p{color:var(--muted);font-size:14px;line-height:1.65;margin:0}.tools{background:#edf6f2}.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.tool{background:white;padding:25px;border-radius:20px;border:1px solid var(--line)}.tool h3{margin-top:0;color:var(--navy)}label{display:block;font-size:13px;font-weight:700;color:#526b79;margin:15px 0 7px}input{width:100%;padding:12px 13px;border:1px solid #dce7e2;border-radius:10px;outline:none}input:focus{border-color:var(--green)}.result{background:#e8f9f1;border-radius:13px;padding:16px;margin-top:17px;color:#087c58}.result strong{font-size:25px;display:block;margin-top:5px}.goalbar{height:10px;background:#e8efec;border-radius:20px;overflow:hidden;margin:12px 0}.goalbar span{display:block;height:100%;width:0;background:var(--green);transition:.3s}.quiz{max-width:720px;margin:auto;background:white;border:1px solid var(--line);border-radius:20px;padding:25px}.quiz button{display:block;width:100%;text-align:left;padding:13px;margin:9px 0;border:1px solid var(--line);border-radius:11px;background:#fff;cursor:pointer}.quiz button:hover{border-color:var(--green);background:#f2fcf7}.quiz button:disabled{cursor:default}.feedback{font-weight:700;margin-top:12px;min-height:22px}.tips{background:var(--navy);color:white}.tips .section-head h2{color:white}.tips .section-head p{color:#c4d4dc}.tip-grid .card{background:#183a50;border-color:#315064}.tip-grid h3{color:white}.tip-grid p{color:#c4d4dc}footer{background:#0b2233;color:#b8cbd4;padding:30px 0;text-align:center;font-size:13px}.footer-brand{font-size:20px;color:white;font-weight:800;margin-bottom:8px}
+#sf-chat-button{position:fixed;bottom:24px;right:24px;width:62px;height:62px;border:0;border-radius:50%;background:var(--green);color:white;font-size:27px;cursor:pointer;box-shadow:0 7px 25px #0003;z-index:99}
+#sf-chat{display:none;position:fixed;bottom:98px;right:24px;width:355px;max-width:calc(100vw - 28px);height:510px;max-height:72vh;background:white;border-radius:19px;box-shadow:0 12px 45px #102b3f35;z-index:99;overflow:hidden;flex-direction:column}
+#sf-header{background:var(--navy);color:white;padding:16px;display:flex;justify-content:space-between;align-items:center}#sf-header small{color:#8fe6bd}#sf-close{background:none;color:white;border:0;font-size:24px;cursor:pointer}
+#sf-messages{flex:1;padding:13px;overflow-y:auto;background:#f4f8f7}.sf-msg{padding:11px 13px;border-radius:13px;margin:9px 0;max-width:88%;font-size:13px;line-height:1.5;white-space:pre-line}.sf-bot{background:white;border:1px solid #e5ecea}.sf-user{background:var(--green);color:white;margin-left:auto}
+#sf-options{padding:8px 11px;display:flex;flex-wrap:wrap;gap:6px;background:#f4f8f7}.sf-option{border:1px solid var(--green);color:#087c58;background:white;border-radius:20px;padding:7px 10px;cursor:pointer;font-size:12px}
+#sf-form{display:flex;padding:11px;gap:7px;border-top:1px solid #eee}#sf-input{flex:1;min-width:0;padding:11px;border:1px solid #ddd;border-radius:20px}#sf-send{background:var(--green);color:white;border:0;border-radius:20px;padding:0 15px;cursor:pointer}
+@media(max-width:800px){nav{display:none}.menu{display:block}.hero-grid,.tool-grid{grid-template-columns:1fr}.hero{padding:48px 0}.dashboard{transform:none}.grid{grid-template-columns:1fr 1fr}.section-head h2{font-size:29px}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.nav{padding:13px 16px}.wrap{padding:0 16px}.hero h1{font-size:42px}.dashboard{padding:20px}section{padding:52px 0}}
+</style>
+</head>
+<body>
+<header><div class="nav"><a class="brand" href="#">Smart <span>Financeek</span></a><nav><a href="#about">Мүмкіндіктер</a><a href="#learn">Қаржы әлемі</a><a href="#tools">Калькулятор</a><a href="#quiz">Тест</a></nav><a class="navbtn" href="#tools">Бастау</a></div></header>
+
+<main>
+<section class="hero">
+<div class="wrap hero-grid">
+<div><span class="eyebrow">✦ Қаржылық сауаттылық платформасы</span><h1>Қаржыңды басқар.<br><span>Болашағыңды құр.</span></h1><p>Smart Financeek — ақшаны жоспарлауды, жинақтауды және дұрыс қаржылық шешім қабылдауды үйренуге арналған қарапайым платформа.</p><div class="actions"><a class="primary" href="#learn">Үйренуді бастау →</a><a class="secondary" href="#tools">Бюджетті есептеу</a></div></div>
+<div class="dashboard"><div class="dash-top"><span>Қаржы бақылау тақтасы</span><span>● Үлгі</span></div><div style="color:#c4d4dc;font-size:13px;margin-top:24px">Жалпы жинақ</div><div class="balance">₸ 450 000</div><div class="positive">↑ +12.8% осы айда</div><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="barlabels"><span>Қаң</span><span>Ақп</span><span>Нау</span><span>Сәу</span><span>Мам</span><span>Мау</span></div></div>
+</div></section>
+
+<section id="about"><div class="wrap"><div class="section-head"><h2>Бір платформа — көп мүмкіндік</h2><p>Қаржылық сауаттылықты күнделікті өмірде қолдануға көмектесетін құралдар.</p></div><div class="grid">
+<div class="card"><div class="ico">📊</div><h3>Бюджетті жоспарлау</h3><p>Кіріс пен шығысты бақылап, айлық қаражатыңды тиімді бөлуді үйрен.</p></div>
+<div class="card"><div class="ico">🎯</div><h3>Жинақ мақсаты</h3><p>Мақсатыңды белгіле, қанша жинағаныңды және қанша қалғанын бақыла.</p></div>
+<div class="card"><div class="ico">🤖</div><h3>AI кеңесші</h3><p>SmartFinance чат-ботынан банк қызметтері туралы жалпы ақпарат ал.</p></div>
+</div></div></section>
+
+<section id="learn" class="tools"><div class="wrap"><div class="section-head"><h2>Қаржы әлемін таны</h2><p>Негізгі қаржылық ұғымдармен танысып, ақшаны сауатты басқаруды баста.</p></div><div class="grid">
+<div class="card"><div class="ico">💵</div><h3>Кіріс және шығыс</h3><p>Кіріс — алынған ақша, ал шығыс — жұмсалған қаражат. Екеуін жазып жүру бюджет құруға көмектеседі.</p></div>
+<div class="card"><div class="ico">🏦</div><h3>Банк және карта</h3><p>Банк шот, төлем картасы және аударым сияқты қаржылық қызметтер ұсынады.</p></div>
+<div class="card"><div class="ico">💰</div><h3>Жинақ және депозит</h3><p>Жинақ — болашақ мақсатқа сақталған ақша. Депозит шарттарына қарай сыйақы әкелуі мүмкін.</p></div>
+<div class="card"><div class="ico">📈</div><h3>Қаржылық жоспар</h3><p>Мақсат қою, шығындарды бөлу және төтенше жағдайға қаражат сақтау маңызды.</p></div>
+<div class="card"><div class="ico">🛡️</div><h3>Қаржылық қауіпсіздік</h3><p>PIN-кодты, құпиясөзді және SMS растау кодтарын ешкімге берме.</p></div>
+<div class="card"><div class="ico">🧾</div><h3>Несие туралы</h3><p>Несие аларда пайыздық мөлшерлемені, толық төлем сомасын және мерзімін мұқият салыстыр.</p></div>
+</div></div></section>
+
+<section id="tools"><div class="wrap"><div class="section-head"><h2>Қаржылық құралдар</h2><p>Өз деректеріңді енгізіп, қарапайым есептеулер жасап көр.</p></div><div class="tool-grid">
+<div class="tool"><h3>📊 Айлық бюджет калькуляторы</h3><label for="income">Айлық кіріс (₸)</label><input id="income" type="number" min="0" placeholder="Мысалы: 250000"><label for="expense">Айлық шығыс (₸)</label><input id="expense" type="number" min="0" placeholder="Мысалы: 150000"><button class="primary" style="margin-top:16px" onclick="calcBudget()">Есептеу</button><div class="result" id="budgetResult">Кіріс пен шығысты енгізіп, есептеңіз.</div></div>
+<div class="tool"><h3>🎯 Жинақ мақсаты</h3><label for="target">Мақсат сомасы (₸)</label><input id="target" type="number" min="1" placeholder="Мысалы: 100000"><label for="saved">Жиналған ақша (₸)</label><input id="saved" type="number" min="0" placeholder="Мысалы: 25000"><button class="primary" style="margin-top:16px" onclick="calcGoal()">Прогресті көру</button><div class="goalbar"><span id="goalFill"></span></div><div class="result" id="goalResult">Мақсатыңды енгізіп, прогресті есепте.</div></div>
+</div></div></section>
+
+<section id="quiz"><div class="wrap"><div class="section-head"><h2>Біліміңді тексер</h2><p>Қаржылық сауаттылық бойынша шағын тест.</p></div><div class="quiz"><div id="question" style="font-weight:800;font-size:18px">1. Бюджет дегеніміз не?</div><div id="answers"></div><div class="feedback" id="feedback"></div><button class="primary" id="next" style="display:none;text-align:center" onclick="nextQuestion()">Келесі сұрақ →</button><div id="score" style="color:#087c58;font-weight:800;margin-top:12px"></div></div></div></section>
+
+<section class="tips"><div class="wrap"><div class="section-head"><h2>Қаржылық пайдалы кеңестер</h2><p>Күнделікті өмірде қолдануға болатын қарапайым қағидалар.</p></div><div class="grid tip-grid">
+<div class="card"><h3>01. Жоспар құр</h3><p>Ай сайын кіріс пен шығысыңды жазып, қаражатыңды алдын ала бөл.</p></div>
+<div class="card"><h3>02. Мақсатқа жина</h3><p>Үлкен мақсатты шағын кезеңдерге бөліп, тұрақты жинақ жаса.</p></div>
+<div class="card"><h3>03. Қауіпсіздікті сақта</h3><p>Банк деректерін бөгде адамдарға берме және күмәнді сілтемелерді ашпа.</p></div>
+</div></div></section>
+</main>
+
+<footer><div class="wrap"><div class="footer-brand">Smart Financeek</div><div>Қаржылық сауаттылық — сенімді болашақтың негізі.</div><p>© 2026 Smart Financeek | Оқу жобасы</p><small>Сайттағы ақпарат оқу мақсатында берілген. Нақты қаржылық шешім қабылдамас бұрын ресми ұйымдардан ақпарат алыңыз.</small></div></footer>
+
+<button id="sf-chat-button" onclick="sfToggle()" aria-label="Чат-ботты ашу">💬</button>
+<div id="sf-chat">
+<div id="sf-header"><div><strong>🤖 SmartFinance AI</strong><br><small>● Онлайн кеңесші · оқу режимі</small></div><button id="sf-close" onclick="sfToggle()">×</button></div>
+<div id="sf-messages"><div class="sf-msg sf-bot">Сәлеметсіз бе! 👋<br>Smart Financeek чат-ботына қош келдіңіз! Сізге қалай көмектесе аламын?</div></div>
+<div id="sf-options"><button class="sf-option" onclick="sfReply('Банк карталары')">💳 Карталар</button><button class="sf-option" onclick="sfReply('Несие')">🏦 Несие</button><button class="sf-option" onclick="sfReply('Депозит')">💰 Депозит</button><button class="sf-option" onclick="sfReply('Ақша аудару')">💸 Аударым</button><button class="sf-option" onclick="sfReply('Шоттағы қаражат')">📊 Шот</button><button class="sf-option" onclick="sfReply('Маманмен байланысу')">☎️ Маман</button></div>
+<form id="sf-form" onsubmit="sfSend(event)"><input id="sf-input" placeholder="Сұрағыңызды жазыңыз..." autocomplete="off"><button id="sf-send" type="submit">➤</button></form>
+</div>
+
+<script>
+function calcBudget(){let i=Number(document.getElementById('income').value),e=Number(document.getElementById('expense').value),r=document.getElementById('budgetResult');if(!i||i<0||e<0||document.getElementById('expense').value===''){r.textContent='Кіріс пен шығысты дұрыс енгізіңіз.';return}let b=i-e;r.innerHTML='Ай соңындағы қалдық:<strong>'+b.toLocaleString('kk-KZ')+' ₸</strong>'+(b>=0?'Жақсы! Қаражатыңыз оң қалдықта.':'Шығыс кірістен көп. Бюджетті қайта қарастырыңыз.')}
+function calcGoal(){let t=Number(document.getElementById('target').value),s=Number(document.getElementById('saved').value),r=document.getElementById('goalResult');if(t<=0||s<0||document.getElementById('target').value===''){r.textContent='Мақсат сомасын дұрыс енгізіңіз.';return}let p=Math.min(100,s/t*100),left=Math.max(0,t-s);document.getElementById('goalFill').style.width=p+'%';r.innerHTML='Мақсаттың орындалуы:<strong>'+p.toFixed(1)+'%</strong>'+(left?('Қалғаны: '+left.toLocaleString('kk-KZ')+' ₸'):'Мақсатыңызға жеттіңіз!')}
+const questions=[{q:'1. Бюджет дегеніміз не?',a:['Кіріс пен шығысты жоспарлау','Тек ақша сақтау','Банк картасының атауы'],c:0},{q:'2. PIN-кодты кімге айтуға болады?',a:['Досыңа','Ешкімге','Банк қызметкеріне телефонмен'],c:1},{q:'3. Депозит дегеніміз не?',a:['Ақшаны банкте сақтау қызметі','Несие түрі','Ақша аудару тәсілі'],c:0},{q:'4. Кіріс дегеніміз не?',a:['Жұмсалған ақша','Алынған ақша','Қарыз'],c:1},{q:'5. Күмәнді сілтеме келсе не істеу керек?',a:['Бірден ашу','Достарға жіберу','Ашпай, дереккөзін тексеру'],c:2}];let qi=0,points=0,answered=false;
+function renderQuestion(){let q=questions[qi];document.getElementById('question').textContent=q.q;let box=document.getElementById('answers');box.innerHTML='';q.a.forEach((a,i)=>{let b=document.createElement('button');b.textContent=a;b.onclick=()=>chooseAnswer(i);box.appendChild(b)});document.getElementById('feedback').textContent='';document.getElementById('next').style.display='none';document.getElementById('score').textContent='';answered=false}
+function chooseAnswer(i){if(answered)return;answered=true;let q=questions[qi];let buttons=document.querySelectorAll('#answers button');buttons.forEach(b=>b.disabled=true);if(i===q.c){points++;document.getElementById('feedback').textContent='Дұрыс жауап! ✓'}else{document.getElementById('feedback').textContent='Дұрыс жауап: '+q.a[q.c]}document.getElementById('next').style.display='block';document.getElementById('next').textContent=qi===questions.length-1?'Нәтижені көру':'Келесі сұрақ →'}
+function nextQuestion(){if(qi<questions.length-1){qi++;renderQuestion()}else{document.getElementById('question').textContent='Тест аяқталды!';document.getElementById('answers').innerHTML='';document.getElementById('feedback').textContent='';document.getElementById('next').style.display='none';document.getElementById('score').textContent='Нәтиже: '+points+' / '+questions.length+' дұрыс жауап. Сәттілік!';let b=document.createElement('button');b.className='primary';b.textContent='Қайта тапсыру';b.style.textAlign='center';b.onclick=()=>{qi=0;points=0;renderQuestion()};document.getElementById('answers').appendChild(b)}}
+renderQuestion();
+
+function sfToggle(){
+  const chat=document.getElementById('sf-chat');
+  chat.style.display=chat.style.display==='flex'?'none':'flex';
+  if(chat.style.display==='flex') document.getElementById('sf-input').focus();
+}
+function sfAdd(text,type){
+  const messages=document.getElementById('sf-messages');
+  const div=document.createElement('div');
+  div.className='sf-msg '+(type==='user'?'sf-user':'sf-bot');
+  div.textContent=text;
+  messages.appendChild(div);
+  messages.scrollTop=messages.scrollHeight;
+}
+function sfNormalize(text){
+  return text.toLocaleLowerCase('kk-KZ')
+    .replace(/[і]/g,'и')
+    .replace(/[ә]/g,'а')
+    .replace(/[ө]/g,'о')
+    .replace(/[үұ]/g,'у')
+    .replace(/[ң]/g,'н')
+    .replace(/[ғ]/g,'г')
+    .replace(/[қ]/g,'к')
+    .replace(/[һ]/g,'х')
+    .replace(/[^\p{L}\p{N}\s]/gu,' ')
+    .replace(/\s+/g,' ').trim();
+}
+function sfGetAnswer(text){
+  const q=sfNormalize(text);
+  const has=(words)=>words.some(w=>q.includes(sfNormalize(w)));
+
+  if(has(['сәлем','салем','қайырлы күн','қайырлы кеш','привет']))
+    return 'Сәлеметсіз бе! 👋 Smart Financeek көмекшісімін. Банк карталары, несие, депозит, ақша аудару, бюджет және қаржылық қауіпсіздік туралы сұрақтарыңызға жауап беремін.';
+  if(has(['көмек','не істей аласың','қандай қызмет','мүмкіндік']))
+    return 'Мен мына тақырыптар бойынша көмектесемін:\n💳 Банк карталары\n🏦 Несие түрлері\n💰 Депозиттер\n💸 Ақша аудару\n📊 Шот пен баланс\n🧮 Бюджетті жоспарлау\n🔐 Қаржылық қауіпсіздік\n☎️ Маманмен байланысу';
+  if(has(['pin','пин','sms','смс','құпиясөз','пароль','код','қауіпсіздік','алаяқ','фишинг']))
+    return '🔐 ҚАРЖЫЛЫҚ ҚАУІПСІЗДІК\nPIN-кодты, құпиясөзді, CVV/CVC дерегін және SMS арқылы келген растау кодын ешкімге бермеңіз. Күмәнді сілтемелерді ашпаңыз. Банкке тек ресми қосымша немесе ресми нөмір арқылы хабарласыңыз.';
+  if(has(['карта','картаны','карточка','банк картасы','карта ашу']))
+    return '💳 БАНК КАРТАЛАРЫ\nБанк картасы дүкенде және интернетте төлем жасауға, қолма-қол ақша алуға және аударым жасауға көмектеседі.\n\nКарта ашу үшін банктің ресми мобильді қосымшасын немесе бөлімшесін пайдаланыңыз. Қызмет ақысы, лимиттер және шарттар банкке байланысты.';
+  if(has(['ипотека','үй ал','баспана']))
+    return '🏠 ИПОТЕКАЛЫҚ НЕСИЕ\nИпотека — тұрғын үй сатып алуға арналған ұзақ мерзімді несие. Шарттары банкке, бастапқы жарнаға, мерзімге және төлем қабілетіне байланысты. Шешім қабылдамас бұрын жалпы қайтарылатын соманы және қосымша шығындарды салыстырыңыз.';
+  if(has(['автонесие','көлік несиесі','машина ал']))
+    return '🚗 АВТОНЕСИЕ\nАвтонесие автокөлік сатып алуды қаржыландыруға арналған. Пайыздық мөлшерлеме, бастапқы жарна, мерзім және сақтандыру талаптары әр банкте әртүрлі болуы мүмкін.';
+  if(has(['несие','кредит','қарыз','қарыз алу']))
+    return '🏦 НЕСИЕ ТҮРЛЕРІ\n1. Тұтынушылық несие — жеке қажеттіліктерге.\n2. Ипотека — тұрғын үй сатып алуға.\n3. Автонесие — автокөлік алуға.\n\nНесие аларда жылдық тиімді сыйақы мөлшерлемесін, комиссияларды, ай сайынғы төлемді және жалпы қайтарылатын соманы тексеріңіз. Бұл бот нақты несие мақұлдамайды.';
+  if(has(['депозит','салым','ақша жинау','жинақ шоты']))
+    return '💰 ДЕПОЗИТ\nДепозит — ақшаны банкке белгілі бір шарттармен орналастыру қызметі. Депозит таңдағанда жылдық тиімді мөлшерлемені, мерзімді, толықтыру және мерзімінен бұрын алу шарттарын салыстырыңыз. Нақты шарттарды банктің ресми сайтынан тексеріңіз.';
+  if(has(['аударым','аудару','аударам','ақша жібер','ақша салу']))
+    return '💸 АҚША АУДАРУ\nӘдетте аударым жасау үшін:\n1. Банктің ресми қосымшасын ашыңыз.\n2. «Аударымдар» бөлімін таңдаңыз.\n3. Алушының деректерін енгізіңіз.\n4. Аты-жөнін және соманы қайта тексеріңіз.\n5. Тек содан кейін операцияны растаңыз.\n\nҚұпия кодтарды ешкімге айтпаңыз. Комиссия мен лимит банкке байланысты.';
+  if(has(['баланс','шот','ақшам','ақшамды','қаражат','қалдық','ақша қалды']))
+    return '📊 ШОТТАҒЫ ҚАРАЖАТТЫ ТЕКСЕРУ\nМен жеке банк шотыңызға кіре алмаймын. Балансты тексеру үшін банктің ресми мобильді қосымшасын ашып, «Шоттар» немесе «Баланc» бөлімін қараңыз. Кіру деректерін чатқа жібермеңіз.';
+  if(has(['бюджет','кіріс','шығыс','ақшаны жоспар','жоспарлау']))
+    return '📊 БЮДЖЕТТІ ЖОСПАРЛАУ\nАлдымен айлық кірісті есептеңіз. Содан кейін міндетті шығындарды, күнделікті қажеттерді және жинақты бөліңіз. Кіріс пен шығысты жазып отыру артық шығынды байқауға көмектеседі. Сайттағы «Бюджет калькуляторын» да пайдалана аласыз.';
+  if(has(['құжат','қандай құжат']))
+    return '📄 ҚҰЖАТТАР\nҚажетті құжаттар несие түріне және банк талаптарына байланысты. Банк жеке басты куәландыратын құжатты және қосымша мәліметтерді сұрауы мүмкін. Нақты тізімді таңдаған банктің ресми арнасынан біліңіз.';
+  if(has(['маман','оператор','байланыс','телефон нөмір','колл']))
+    return '☎️ БАНК МАМАНЫМЕН БАЙЛАНЫСУ\nБұл оқу жобасының боты нақты банкке қосылмаған. Қажетті банктің ресми сайтына немесе мобильді қосымшасына кіріп, «Байланыс» бөлімінен ресми нөмірін табыңыз.';
+  if(has(['рақмет','рахмет','алғыс']))
+    return 'Оқасы жоқ! 😊 Smart Financeek қызметін пайдаланғаныңызға рақмет. Тағы сұрағыңыз болса, жаза беріңіз.';
+  if(has(['сау бол','кездескенше']))
+    return 'Сау болыңыз! Қаржыңызды сауатты әрі қауіпсіз басқарыңыз! 👋';
+
+  return 'Сұрағыңызды толық түсінбедім. Оны басқа сөздермен жазып көріңіз немесе мына тақырыптардың бірін таңдаңыз: карта, несие, депозит, ақша аудару, шот, бюджет, қауіпсіздік.';
+}
+function sfReply(question){
+  const clean=question.trim();
+  if(!clean)return;
+  sfAdd(clean,'user');
+  const answer=sfGetAnswer(clean);
+  window.setTimeout(()=>sfAdd(answer,'bot'),250);
+}
+function sfSend(event){
+  event.preventDefault();
+  const input=document.getElementById('sf-input');
+  const value=input.value.trim();
+  if(!value)return;
+  input.value='';
+  sfReply(value);
+}
+</script>
+</body>
+</html>
